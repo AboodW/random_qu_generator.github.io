@@ -18,3 +18,74 @@ body{
     justify-content: center;
     
 }
+
+.quote-container{
+    width: auto;
+    max-width: 900px;
+    padding:20px 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.45);/*the a (alpha value ) control the opcity so we can see a little bit the background*/
+     box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);/* horizantal  vertical   blur  raduis*/
+}
+
+.quote-text{
+    font-size: 2.65rem;
+}
+
+.long-quote{ /*to check if the quote is bigger than the size of the width then we make the font smaller*/
+font-size: 1.95rem;
+}
+
+.fa-quote-left{
+font-size:3.9rem ;
+}
+
+.quote-author{
+    margin-top:15px;
+    font-size: 1.9rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+button:hover{
+    filter: brightness(110%);
+}
+button:active{
+    transform: translate(0,0.3rem);/*to go down when we press the button*/
+    box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65) ;
+}
+
+.button-container{
+    margin-top: 15px;
+    display:flex;
+    justify-content: space-between;
+}
+
+button{
+    cursor:pointer;
+    font-size: 1.2rem;
+    height: 2.4rem;
+    border: none;
+    border-radius: 10px;
+    padding : 0.5rem 1.8rem;
+    color:#fff;
+    background:#333;
+    box-shadow: 0 0.3rem rgba(121, 121, 121, 0.65);
+}
+.twitter-button:hover{
+    color:#38a1f3;
+}
+.fa-twitter{
+    font-size: 1.5rem;
+}
+
+/*Media Query: Tablet or Smaller*/
+@media screen and (max-width: 1000px){/*mean you want that to be enabled on devices with screens equal or less than 1000px like tablets*/
+.quote-container{
+    margin: auto 10px;/*auto on top and bottom and 10 px on right and left*/
+}
+.quote-text{
+    font-size: 2.4rem;
+}
+}
+
