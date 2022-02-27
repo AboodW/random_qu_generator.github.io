@@ -1,12 +1,63 @@
-//Get Quote from API
+const quoteContainer = document.getElementById('quote-container');
+const quoteText  = document.getElementById('quote');
+const authorText = document.getElementById('author');
+const twitterBtn = document.getElementById('twitter');
+const newQuoteBtn = document.getElementById('new-quote');
 
+//Get Quote from API
 async function getQuote() {
+   try{
    console.log('test');
    let response = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json&fbclid=IwAR0U_D4wVVClorSqiSyU-U9CRrsqVTD2G9z9U4Crxn7ctkbFE3n5xRHbNjY');
    let data = await response.json();
-   console.log(data);
+   // console.log(data);
+
+
+   //if author is balnk, add unknown
+   if(data.quoteAuthor === ''){
+   authorText.innerText = "UNKNOWN";
+   } else{
+   authorText.innerText = data.quoteAuthor;
+   
 }
+
+//Reduce font size for long quotes
+if(data.quoteText.length > 120){
+quoteText.classList.add('long-quote');
+}
+else{
+   quoteText.classList.remove('long-quote');
+}
+quoteText.innerText = data.quoteText;
+
+
+}catch(error){
+   console.log("sry there is an error,," +error);
+}
+}
+
+
+//here end the functionality of new quote Button
+
+//now start the twitter functionality
+   function tweetQuote(){
+      try{
+         const quote = quoteText.innerText;
+         const author = authorText.innerText;
+         const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+         window.open(twitterUrl , '_blank');
+      } catch(error){
+         console.log("sry there is an error,," +error);
+      }
+      
+   }
+
+   newQuoteBtn.addEventListener("click",getQuote);
+   twitterBtn.addEventListener("click",tweetQuote);
+
 getQuote();
+
+
 
 
 
