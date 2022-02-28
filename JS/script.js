@@ -3,10 +3,26 @@ const quoteText  = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
+const loader = document.getElementById('loader');
+
+//show loading
+function showLoadingSpinner(){
+   loader.hidden =false;
+   quoteContainer.hidden = true;
+}
+
+//hide loading
+function removeLoadingSpinner(){
+   if(!loader.hidden){
+      quoteContainer.hidden = false;
+      loader.hidden =true;
+   }
+}
 
 //Get Quote from API
 async function getQuote() {
    try{
+      showLoadingSpinner();
    console.log('test');
    let response = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json&fbclid=IwAR0U_D4wVVClorSqiSyU-U9CRrsqVTD2G9z9U4Crxn7ctkbFE3n5xRHbNjY');
    let data = await response.json();
@@ -30,9 +46,12 @@ else{
 }
 quoteText.innerText = data.quoteText;
 
-
+//stop loader, show quotes: 
+   removeLoadingSpinner();
+throw new Error('ooh sry an error happend');
 }catch(error){
-   console.log("sry there is an error,," +error);
+   console.log('ooh sry an error happend',error);
+   // getQuote();
 }
 }
 
@@ -56,7 +75,7 @@ quoteText.innerText = data.quoteText;
    twitterBtn.addEventListener("click",tweetQuote);
 
 getQuote();
-
+// loading();
 
 
 
