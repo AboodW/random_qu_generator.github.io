@@ -50,10 +50,9 @@ quoteText.innerText = data.quoteText;
 
 //stop loader, show quotes: 
    removeLoadingSpinner();
-throw new Error('ooh sry an error happend');
+// throw new Error('ooh sry an error happend');
 }catch(error){
-   console.log('ooh sry an error happend',error);
-   // getQuote();
+   getQuote();
 }
 }
 
