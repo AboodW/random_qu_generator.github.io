@@ -22,9 +22,11 @@ function removeLoadingSpinner(){
 //Get Quote from API
 async function getQuote() {
    try{
+    let proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    let apiUrl = "https://forismatic-proxy.herokuapp.com/?lang=en&key=123456";
+      
       showLoadingSpinner();
-   console.log('test');
-   let response = await fetch('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json&fbclid=IwAR0U_D4wVVClorSqiSyU-U9CRrsqVTD2G9z9U4Crxn7ctkbFE3n5xRHbNjY');
+   let response = await fetch('https://forismatic-proxy.herokuapp.com/?lang=en&key=123456');
    let data = await response.json();
    // console.log(data);
 
@@ -75,7 +77,6 @@ throw new Error('ooh sry an error happend');
    twitterBtn.addEventListener("click",tweetQuote);
 
 getQuote();
-// loading();
 
 
 
